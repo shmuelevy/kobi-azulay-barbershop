@@ -1,12 +1,31 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [],
+  imports: [CommonModule,FormsModule],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit{
+
+  clientsList:any=[]
+
+constructor(private http:HttpClient){}
+
+
+loadData(){
+  this.http.get('https://kobi--azulay-default-rtdb.firebaseio.com/clients.json').subscribe(users=>{  
+ this.clientsList=users
+ console.log('usersList: ',this.clientsList) 
+})
+}
+
+ngOnInit(): void {
+  this.loadData()
+}
 
 }

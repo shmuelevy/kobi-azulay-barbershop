@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms'
 
@@ -50,10 +51,28 @@ export class HomeComponent {
     '21:30',
   ]
   
+  constructor( private http:HttpClient){}
   
   approve():void{
     if(this.selectedHour&&this.fullName&&this.phoneNumber){
     alert(`${this.fullName} קבע תור עם ${this.selectedBarber} ביום ${this.selectedDay} בשעה ${this.selectedHour}`)
+
+const client = {
+  fullName:this.fullName,
+  phoneNumber:this.phoneNumber,
+  barberName:this.selectedBarber,
+  date:this.selectedDay,
+  time:this.selectedHour,
+}
+
+this.http.post('https://kobi--azulay-default-rtdb.firebaseio.com/clients.json',client).subscribe((response)=>{
+  console.log(response);
+},
+(error)=>{
+  console.log(error)
+}
+)
+
     const indexToRemove = this.hours.indexOf(this.selectedHour);
       if (indexToRemove !== -1) {
         this.hours.splice(indexToRemove, 1);
