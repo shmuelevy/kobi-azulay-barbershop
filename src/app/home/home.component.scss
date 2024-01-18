@@ -1,0 +1,39 @@
+.all{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+
+    .form{
+        display: grid;
+       
+    margin-bottom: 10px;
+    gap: 10px;
+    }
+    label{
+        display: flex;
+   font-weight: bold;
+       align-items: center;
+        
+     }
+     input{
+       
+        box-sizing: border-box;
+        margin: 2%;
+        width:100%;
+     }
+     .barbers{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        margin-left: 5%;
+     }
+}
+
+
+
