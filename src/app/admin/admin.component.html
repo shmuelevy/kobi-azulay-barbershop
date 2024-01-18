@@ -1,4 +1,14 @@
 <p>admin works!</p>
-<div>
-<p>שם: {{clientsList}} </p>
+<div class="user" *ngFor="let cli of clientsList | keyvalue">
+    <p>זיהוי: {{cli.key}}</p>
+    <table>
+<div *ngFor="let prop of cli.value | keyvalue">
+<p></p>
+
+    <tr>{{prop.key}}:
+        <td>{{prop.value}}</td>
+    </tr>
+</div>
+</table>
+
 </div>

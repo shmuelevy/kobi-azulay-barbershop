@@ -58,11 +58,11 @@ export class HomeComponent {
     alert(`${this.fullName} קבע תור עם ${this.selectedBarber} ביום ${this.selectedDay} בשעה ${this.selectedHour}`)
 
 const client = {
-  fullName:this.fullName,
-  phoneNumber:this.phoneNumber,
-  barberName:this.selectedBarber,
-  date:this.selectedDay,
-  time:this.selectedHour,
+  שם:this.fullName,
+  נייד:this.phoneNumber,
+  ספר:this.selectedBarber,
+  יום:this.selectedDay,
+  שעה:this.selectedHour,
 }
 
 this.http.post('https://kobi--azulay-default-rtdb.firebaseio.com/clients.json',client).subscribe((response)=>{

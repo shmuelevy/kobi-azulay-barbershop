@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AdminComponent implements OnInit{
 
-  clientsList:any=[]
+  clientsList:{}={}
 
 constructor(private http:HttpClient){}
 
@@ -20,7 +20,7 @@ constructor(private http:HttpClient){}
 loadData(){
   this.http.get('https://kobi--azulay-default-rtdb.firebaseio.com/clients.json').subscribe(users=>{  
  this.clientsList=users
- console.log('usersList: ',this.clientsList) 
+ console.log('usersList: ',this.clientsList)
 })
 }
 
