@@ -7,20 +7,20 @@
         <input type="tel number" id="phonenumber" [(ngModel)]="phoneNumber" placeholder="פלאפון נייד..." name="phonenumber">
         בחר ספר:<div class="barbers">
         <label>
-        <input type="radio" [(ngModel)]="selectedBarber" name="test" value="קובי">קובי</label>
+        <input type="radio" (click)="onRadioChange1()" [(ngModel)]="selectedBarber" name="test" value="קובי">קובי</label>
         <label>
-        <input type="radio" [(ngModel)]="selectedBarber" name="test" value="חזי">חזי</label>
+        <input type="radio" (click)="onRadioChange2()" [(ngModel)]="selectedBarber" name="test" value="חזי">חזי</label>
     </div><p>הספר שנבחר: {{selectedBarber}}</p>
     <select [disabled]="!selectedBarber" [(ngModel)]="selectedDay" name="day">
         <option value="" disabled selected >בחר יום</option>
         <option *ngFor="let day of days" [value]="day">{{day}}</option>
     </select>
     <p>היום שנבחר: {{selectedDay}}</p>
-    <select [disabled]="!selectedDay" [(ngModel)]="selectedHour" name="hour">
+    <select [disabled]="!selectedDay" (click)="approveForm()" [(ngModel)]="selectedHour" name="hour">
         <option value="" disabled selected>בחר שעה</option>
         <option *ngFor="let hour of hours" [value]="hour">{{hour}}</option>
     </select>
     <p>השעה שנבחרה: {{selectedHour}}</p>
-    <input type="submit">
+    <input type="submit" >
     </form>
     </div>

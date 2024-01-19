@@ -1,14 +1,32 @@
-<p>admin works!</p>
-<div class="user" *ngFor="let cli of clientsList | keyvalue">
-    <p>זיהוי: {{cli.key}}</p>
-    <table>
-<div *ngFor="let prop of cli.value | keyvalue">
-<p></p>
+<div class="panel">
+    <label>חפש:
+<input type="text" placeholder="חפש...">
+</label>
+<select>
+    <option disabled selected>בחר ספר</option>
+    <option>קובי</option>
+    <option>חזי</option>
+</select>
 
-    <tr>{{prop.key}}:
-        <td>{{prop.value}}</td>
-    </tr>
+<select>
+    <option disabled selected>בחר יום</option>
+    <option ></option>
+</select>
+
 </div>
-</table>
 
+<div class="all-users">
+    <!--<p>זיהוי: {{cli.key}}</p>-->
+    <table >
+    <tr class="head">
+        <th>יום</th>
+        <th>נייד</th>
+        <th>ספר</th>
+        <th>שם</th>
+        <th>שעה</th>
+    </tr>
+    <tr class="sub" *ngFor="let cli of clientsList | keyvalue">
+        <td  *ngFor="let prop of cli.value | keyvalue" >{{prop.value}}</td>
+    </tr>
+</table>
 </div>
