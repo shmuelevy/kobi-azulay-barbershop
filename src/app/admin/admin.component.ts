@@ -24,7 +24,21 @@ loadData(){
  console.log('usersList: ',this.clientsList)
 })
 }
+start(name:any,idToDelete:any){
+ if( window.confirm(`האם למחוק את התור של ${name} ?`)){
+this.http.delete(`https://kobi--azulay-default-rtdb.firebaseio.com/clients/${idToDelete}.json`).subscribe((data:any)=>{
+  this.clientsList=data
+alert('תור נמחק')
+this.loadData()
 
+},
+(error) => {
+  console.error('Error deleting client:', error);
+})
+ }else{
+  alert('שגיאה')
+ }
+}
 ngOnInit(): void {
   this.loadData()
 }

@@ -25,8 +25,8 @@
         <th>שם</th>
         <th>שעה</th>
     </tr>
-    <tr class="sub" *ngFor="let cli of clientsList | keyvalue">
-        <td  *ngFor="let prop of cli.value | keyvalue" >{{prop.value}}</td>
+    <tr  class="sub" *ngFor="let cli of clientsList | keyvalue">
+        <td  (dblclick)="start(prop.value,cli.key)" *ngFor="let prop of cli.value | keyvalue" >{{prop.value}}</td>
     </tr>
 </table>
 </div>
