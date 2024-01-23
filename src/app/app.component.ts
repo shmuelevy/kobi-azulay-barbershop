@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  title = 'barbershop-app';
+  title = 'קובי אזולאי - קביעת תורים';
 
 
 

@@ -1,32 +1,41 @@
 <div class="panel">
     <label>חפש:
-<input type="text" placeholder="חפש...">
+<input (ngModelChange)="getClientName()" type="text" placeholder="חפש..." [(ngModel)]="searchClient">
 </label>
-<select>
+<select (change)="getBarberName()" [(ngModel)]="searchBarber">
     <option disabled selected>בחר ספר</option>
     <option>קובי</option>
     <option>חזי</option>
 </select>
 
-<select>
+<select (change)="getDate()" [(ngModel)]="dayChoosed" name="day" >
     <option disabled selected>בחר יום</option>
-    <option ></option>
+    <option *ngFor="let day of chooseDay" [value]="day.date" >{{day.date}}</option>
 </select>
 
 </div>
 
 <div class="all-users">
     <!--<p>זיהוי: {{cli.key}}</p>-->
-    <table >
-    <tr class="head">
-        <th>יום</th>
-        <th>נייד</th>
+    <table>
+    <tr class="head" >
         <th>ספר</th>
+        <th>תאריך</th>
         <th>שם</th>
+        <th>נייד</th>
         <th>שעה</th>
     </tr>
-    <tr  class="sub" *ngFor="let cli of clientsList | keyvalue">
-        <td  (dblclick)="start(prop.value,cli.key)" *ngFor="let prop of cli.value | keyvalue" >{{prop.value}}</td>
+    <tr   class="sub" (dblclick)="delete(cli.fullName,cli.id)" *ngFor="let cli of clientsList  ">
+      
+        <td>  {{cli.barberName}}         </td>
+        <td>    {{cli.date}}         </td>
+        <td>    {{cli.fullName}}         </td>
+        <td>    {{cli.phoneNumber}}         </td>
+        <td>    {{cli.time}}   </td> 
+      <!--  <td  (dblclick)="delete(prop.value,cli.id)" *ngFor="let prop of cli | keyvalue ">
+
+          {{prop.value}}
+        </td>  -->
     </tr>
 </table>
 </div>
