@@ -7,11 +7,16 @@ flex-direction: row;
 height: 300px;
 width: 100%;
 overflow: scroll;
+background-color: lightgray;
 }
 
 th{
     border: 5px solid black;
+    border-collapse: collapse;
 
+}
+input{
+    font-weight: bold;
 }
 td{
     border: 1px solid black;
@@ -20,17 +25,19 @@ td{
 }
 table{
     border: 1px solid red;
-
     width: 100%;
     height: auto;
+    border-collapse:collapse;
 
 }
 
 .panel{
-    width: 500px;
+    width: 100%;
    justify-content: space-between;
    display: flex;
    flex-direction: row;
   border: 1px solid black;
-  align-items: flex-start;
+}
+label{
+    margin: 5px;
 }

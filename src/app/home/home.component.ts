@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit{
   days2:any[]=[]
 daysToChoose:any[]=[]
   
+toggleFridayHours:any[]=[]
+
 hours11:any[]=[
 '09:00',
 '09:15',
@@ -193,10 +195,22 @@ getClients(){
     }
   }
 
+detectBarberHours(){
+  if(this.selectedBarber==='קובי'){
+this.toggleFridayHours = this.hours11;
+console.log('קובי: '+this.toggleFridayHours)
+
+  }
+  if(this.selectedBarber==='חזי'){
+    this.toggleFridayHours = this.hours22
+    console.log('חזי: '+this.toggleFridayHours)
+  }
+}
+
   switchHoursArray(selectedDay: string): string[] {
     const dayNameMatch = selectedDay.match(/-(.*)$/);
     const dayName = dayNameMatch ? dayNameMatch[1] : '';
-
+this.detectBarberHours()
     // Map day names to the corresponding arrays
     const hoursByDay: Record<string, string[]> = {
       'יום ראשון': this.hours1,
@@ -204,7 +218,7 @@ getClients(){
       'יום שלישי': this.hours1,
       'יום רביעי': this.hours1,
       'יום חמישי': this.hours1,
-      'יום שישי': this.hours11,
+      'יום שישי': this.toggleFridayHours,
     };
 
     return hoursByDay[dayName] || [];
@@ -235,6 +249,7 @@ this.http.post('https://kobi--azulay-default-rtdb.firebaseio.com/clients.json',c
   });
   console.log(`Client ID: ${client.id}`);
   this.restForm()
+  this.getClients()
 },
 (error)=>{
   console.log(error)
@@ -252,11 +267,15 @@ this.http.post('https://kobi--azulay-default-rtdb.firebaseio.com/clients.json',c
   onRadioChange1(){
     this.daysToChoose = this.days1
    this.hours = this.hours1
+   this.selectedDay =  ''
+   this.selectedHour = ''
 
   }
   onRadioChange2(){
     this.daysToChoose = this.days2
     this.hours = this.hours2
+    this.selectedDay =  ''
+   this.selectedHour = ''
    }
 restForm(){
   this.phoneNumber='';
@@ -266,8 +285,9 @@ restForm(){
     this.fullName=''
 }
 approveForm(){
- 
-    this.formApprove = true
+  if(this.fullName&&this.phoneNumber){
+    this.formApprove = !this.formApprove
+  }
 }
 
 checkIfDateAvailble(barber:any,day:any,hour:any){
@@ -284,6 +304,7 @@ isHourDisabled(hour: string): boolean {
   for (let client of this.adminClientsList) {
     if (this.selectedBarber === client.barberName && this.selectedDay === client.date && hour === client.time
     ) {
+
       return true; 
     }
   }

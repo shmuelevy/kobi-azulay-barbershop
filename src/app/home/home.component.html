@@ -11,16 +11,16 @@
         <label>
         <input type="radio" (click)="onRadioChange2()" [(ngModel)]="selectedBarber" name="test" value="חזי">חזי</label>
     </div><p>הספר שנבחר: {{selectedBarber}}</p>
-    <select [disabled]="!selectedBarber"  name="day" [(ngModel)]="selectedDay" (ngModelChange)="onDaySelected()">
+    <select [disabled]="!selectedBarber" [(ngModel)]="selectedDay" (ngModelChange)="onDaySelected()" name="day">
         <option value="" disabled selected >בחר יום</option>
         <option  *ngFor="let day of daysToChoose" [value]="day.date" > {{ day.date }}</option>
     </select>
     <p>היום שנבחר:  {{ selectedDay }} </p>
-    <select [disabled]="!selectedDay" (click)="approveForm()" [(ngModel)]="selectedHour" name="hour">
+    <select [disabled]="!selectedDay" (change)="approveForm()" [(ngModel)]="selectedHour" name="hour">
         <option value="" disabled selected>בחר שעה</option>
         <option *ngFor="let hour of hours" [value]="hour" [disabled]="isHourDisabled(hour)">{{hour}}</option>
     </select>
     <p>השעה שנבחרה: {{selectedHour}}</p>
-    <input type="submit">
+    <input type="submit" [disabled]="formApprove">
     </form>
     </div>

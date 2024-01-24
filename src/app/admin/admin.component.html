@@ -1,18 +1,20 @@
 <div class="panel">
-    <label>חפש:
-<input (ngModelChange)="getClientName()" type="text" placeholder="חפש..." [(ngModel)]="searchClient">
-</label>
+<label>בחר ספר
 <select (change)="getBarberName()" [(ngModel)]="searchBarber">
     <option disabled selected>בחר ספר</option>
     <option>קובי</option>
     <option>חזי</option>
 </select>
-
+</label>
+<label>בחר יום
 <select (change)="getDate()" [(ngModel)]="dayChoosed" name="day" >
     <option disabled selected>בחר יום</option>
     <option *ngFor="let day of chooseDay" [value]="day.date" >{{day.date}}</option>
 </select>
-
+</label>
+<label>חפש:
+    <input (ngModelChange)="getClientName()" type="text" placeholder="חפש..." [(ngModel)]="searchClient">
+    </label>
 </div>
 
 <div class="all-users">

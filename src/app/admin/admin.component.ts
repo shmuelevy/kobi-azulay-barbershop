@@ -60,7 +60,8 @@ getClientName() {
   if (this.searchClient) {
     this.http.get('https://kobi--azulay-default-rtdb.firebaseio.com/clients.json').subscribe((users: any) => {
       // Filter the clientsList based on searchBarber
-      this.clientsList = Object.values(users).filter((client: any) => client.fullName.includes(this.searchClient) && client.date === this.dayChoosed && client.barberName === this.searchBarber);
+      this.clientsList = Object.values(users).filter((client: any) => 
+        client.fullName.includes(this.searchClient) ||(client.fullName.includes(this.searchClient) && client.date === this.dayChoosed && client.barberName === this.searchBarber));
       console.log('Filtered clientsList:', this.clientsList);
       
     });
@@ -74,7 +75,7 @@ getBarberName() {
   if (this.searchBarber) {
     this.http.get('https://kobi--azulay-default-rtdb.firebaseio.com/clients.json').subscribe((users: any) => {
       // Filter the clientsList based on searchBarber
-      this.clientsList = Object.values(users).filter((client: any) => client.barberName === this.searchBarber && client.date === this.dayChoosed);
+      this.clientsList = Object.values(users).filter((client: any) => client.barberName === this.searchBarber ||(client.barberName === this.searchBarber && client.date === this.dayChoosed &&  client.fullName.includes(this.searchClient)));
       console.log('Filtered clientsList:', this.clientsList);
       
     });
@@ -87,7 +88,7 @@ getBarberName() {
 getDate() {
   if (this.dayChoosed) {
     this.http.get('https://kobi--azulay-default-rtdb.firebaseio.com/clients.json').subscribe((users: any) => {
-      this.clientsList = Object.values(users).filter((client: any) => client.date === this.dayChoosed && client.barberName === this.searchBarber);
+      this.clientsList = Object.values(users).filter((client: any) => client.date === this.dayChoosed && client.barberName === this.searchBarber && client.fullName.includes(this.searchClient));
       
       console.log('Filtered clientsList:', this.clientsList);
     });
