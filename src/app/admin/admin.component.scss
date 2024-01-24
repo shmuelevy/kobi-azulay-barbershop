@@ -32,12 +32,8 @@ table{
 }
 
 .panel{
-    width: 100%;
    justify-content: space-between;
    display: flex;
    flex-direction: row;
   border: 1px solid black;
-}
-label{
-    margin: 5px;
 }
